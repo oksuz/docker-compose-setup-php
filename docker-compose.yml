@@ -1,0 +1,24 @@
+version: '3'
+
+services: 
+  nginx:
+    image: nginx:stable
+    ports: 
+      - 8080:80
+    volumes: 
+      - ./site:/var/www/sites/site
+      - ./nginx-conf:/etc/nginx/conf.d
+  
+  php:
+    image: php:7.4-fpm
+    volumes: 
+      - ./site:/var/www/sites/site
+  
+  db:
+    image: mariadb:10.5.4
+    environment: 
+      MYSQL_ROOT_PASSWORD: "1"
+    ports:
+      - 3306:3306
+    volumes: 
+      - ./db:/var/lib/mysql
