@@ -10,9 +10,11 @@ services:
       - ./nginx-conf:/etc/nginx/conf.d
   
   php:
-    image: php:7.4-fpm
     volumes: 
       - ./site:/var/www/sites/site
+    build: 
+      context: .
+      dockerfile: Dockerfile-php
   
   db:
     image: mariadb:10.5.4
