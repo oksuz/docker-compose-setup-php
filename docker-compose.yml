@@ -6,12 +6,12 @@ services:
     ports: 
       - 8080:80
     volumes: 
-      - ./site:/var/www/sites/site
+      - ./webroot:/var/www/default
       - ./nginx-conf:/etc/nginx/conf.d
   
   php:
     volumes: 
-      - ./site:/var/www/sites/site
+      - ./webroot:/var/www/default
     build: 
       context: .
       dockerfile: Dockerfile-php
